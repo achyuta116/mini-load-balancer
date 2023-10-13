@@ -1,0 +1,8 @@
+version: '2'
+services:
+  dev-env:
+    image: docker:dind
+    container_name: parent
+    privileged: true
+    volumes:
+      - .:/src

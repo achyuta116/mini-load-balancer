@@ -1,0 +1,25 @@
+version: '2'
+services:
+  app_template: &app_template
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    networks:
+      - shared
+
+  server-1:
+    <<: *app_template
+
+  server-2:
+    <<: *app_template
+
+  server-3:
+    <<: *app_template
+
+  server-4:
+    <<: *app_template
+
+networks:
+  shared:
+    driver: bridge
+
