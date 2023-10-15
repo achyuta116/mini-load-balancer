@@ -1,23 +1,30 @@
 version: '2'
-services:
-  app_template: &app_template
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    networks:
-      - shared
+x-defaults: &app_template
+  image: mlb-server:latest 
+  networks:
+    - shared
 
+services:
   server-1:
     <<: *app_template
+    environment:
+      - NAME=1
 
   server-2:
     <<: *app_template
+    environment:
+      - NAME=2
 
   server-3:
     <<: *app_template
+    environment:
+      - NAME=3
 
   server-4:
     <<: *app_template
+    environment:
+      - NAME=4
+
 
 networks:
   shared:
