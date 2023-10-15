@@ -25,8 +25,12 @@ services:
     environment:
       - NAME=4
 
+  balancer:
+    <<: *app_template
+    image: mlb-balancer:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
 networks:
   shared:
     driver: bridge
-
